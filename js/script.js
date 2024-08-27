@@ -31,24 +31,16 @@ window.onload = function () {
     })();
   }
 
-  // 모달창
-  let body = document.querySelector("body");
-  let modal = document.querySelector(".modal");
-  modal.addEventListener("click", function () {
-    // modal.style.display = "none";
-    // fadeOut(modal);
-    anime({
-      targets: ".modal",
-      delay: 200,
-      duration: 500,
-      opacity: 0,
-      easing: "easeInOutQuad",
-      complete: function () {
-        modal.style.display = "none";
-        body.classList.add("active");
-      },
+  // 모달창 기능
+  let modalWrap = document.querySelector(".modal-wrap");
+  let modalClose = document.querySelector(".modal-close");
+  modalClose.addEventListener("click", function () {
+    modalWrap.classList.add("fadeOut");
+    modalWrap.addEventListener("animationend", () => {
+      modalWrap.style.display = "none";
     });
   });
+
   // 스크롤 기능
   // 스크롤바의 상단위치
   let scy = 0;
